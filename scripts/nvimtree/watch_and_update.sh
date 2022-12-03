@@ -76,7 +76,7 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 		then
 			# Root completely changed
 			echo "Root changed: $main_pane_cwd"
-			"$PYTHON_COMMAND" "$CURRENT_DIR/change_root.py" "$NVIM_ADDR" "$main_pane_cwd" 
+			"$PYTHON_COMMAND" "$CURRENT_DIR/change_root.py" "$NVIM_ADDR" "$main_pane_cwd"
 
 			if [[ $? -ne 0 ]]; then
 				echo "Error using pynvim. Trying tmux send-keys."
@@ -96,7 +96,7 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 				# If find file is not successful (possibly the user changed the root directory), change the root directory and find again
 				
 				echo "Opening directory: $main_pane_cwd"
-				"$PYTHON_COMMAND" "$CURRENT_DIR/go_random_within_rootdir.py" "$NVIM_ADDR" "$main_pane_cwd" "$side_pane_root"
+				new_root_dir=$("$PYTHON_COMMAND" "$CURRENT_DIR/go_random_within_rootdir.py" "$NVIM_ADDR" "$main_pane_cwd" "$side_pane_root")
 
 				if [[ $? -ne 0 ]]; then
 					echo "Error using pynvim. Trying tmux send-keys."
@@ -116,6 +116,8 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 						"  e" nd Enter \
 						"e" nd Enter \
 						"EOF" Enter
+				else
+					side_pane_root="$new_root_dir"
 				fi
 
 			elif [[ "$main_pane_prevcwd" == "$main_pane_cwd"/* ]]; then
@@ -125,7 +127,7 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 				main_pane_child_dir=${main_pane_prevcwd#$main_pane_cwd/}
 				main_pane_first_child="$main_pane_cwd/${main_pane_child_dir%%/*}"
 				echo "Closing directory: $main_pane_first_child"
-				"$PYTHON_COMMAND" "$CURRENT_DIR/go_parent.py" "$NVIM_ADDR" "$main_pane_first_child" "$side_pane_root"
+				new_root_dir=$("$PYTHON_COMMAND" "$CURRENT_DIR/go_parent.py" "$NVIM_ADDR" "$main_pane_first_child" "$side_pane_root")
 
 				
 				if [[ $? -ne 0 ]]; then
@@ -146,10 +148,12 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 						"  e" nd Enter \
 						"e" nd Enter \
 						"EOF" Enter
+				else
+					side_pane_root="$new_root_dir"
 				fi
 			else
 				echo "Jumping to a random folder. Closing all directories and opening this one: $main_pane_cwd. Not changing root dir"
-				"$PYTHON_COMMAND" "$CURRENT_DIR/go_random_within_rootdir.py" "$NVIM_ADDR" "$main_pane_cwd" "$side_pane_root"
+				new_root_dir=$("$PYTHON_COMMAND" "$CURRENT_DIR/go_random_within_rootdir.py" "$NVIM_ADDR" "$main_pane_cwd" "$side_pane_root")
 
 				if [[ $? -ne 0 ]]; then
 					echo "Error using pynvim. Trying tmux send-keys."
@@ -170,6 +174,8 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 						"  e" nd Enter \
 						"e" nd Enter \
 						"EOF" Enter
+				else
+					side_pane_root="$new_root_dir"
 				fi
 			fi
 
