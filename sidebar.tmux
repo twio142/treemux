@@ -8,15 +8,16 @@ source "$SCRIPTS_DIR/variables.sh"
 source "$SCRIPTS_DIR/tree_helpers.sh"
 
 set_default_key_binding_options() {
-	local tree_command="$(tree_command)"
+	local nvim_command="$(nvim_command)"
+	local python_command="$(python_command)"
 	local tree_key="$(tree_key)"
 	local tree_focus_key="$(tree_focus_key)"
-	local tree_pager="$(tree_pager)"
 	local tree_position="$(tree_position)"
 	local tree_width="$(tree_width)"
+	local refresh_interval="$(refresh_interval)"
 
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "$tree_command | ${tree_pager},${tree_position},${tree_width}"
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "$tree_command | ${tree_pager},${tree_position},${tree_width},focus"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval}"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval},focus"
 }
 
 set_key_bindings() {

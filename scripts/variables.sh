@@ -1,26 +1,29 @@
-VAR_KEY_PREFIX="@sidebar-key"
-REGISTERED_PANE_PREFIX="@-sidebar-registered-pane"
-REGISTERED_SIDEBAR_PREFIX="@-sidebar-is-sidebar"
+VAR_KEY_PREFIX="@sidenvimtree-key"
+REGISTERED_PANE_PREFIX="@-sidenvimtree-registered-pane"
+REGISTERED_SIDEBAR_PREFIX="@-sidenvimtree-is-sidenvimtree"
 MINIMUM_WIDTH_FOR_SIDEBAR="71"
 
 TREE_KEY="Tab"
-TREE_OPTION="@sidebar-tree"
+TREE_OPTION="@sidenvimtree-tree"
 
 TREE_FOCUS_KEY="Bspace"
-TREE_FOCUS_OPTION="@sidebar-tree-focus"
+TREE_FOCUS_OPTION="@sidenvimtree-tree-focus"
 
-TREE_COMMAND="tree"
-TREE_COMMAND_OPTION="@sidebar-tree-command"
+REFRESH_INTERVAL="0.5"
+REFRESH_INTERVAL_OPTION="@sidenvimtree-refresh-interval"
 
-TREE_PAGER='sh -c "LESS= less --dumb --chop-long-lines --tilde --IGNORE-CASE --RAW-CONTROL-CHARS"'
-TREE_PAGER_OPTION="@sidebar-tree-pager"
+NVIM_COMMAND="nvim"
+NVIM_COMMAND_OPTION="@sidenvimtree-nvim-command"
+
+PYTHON_COMMAND="python3"
+PYTHON_COMMAND_OPTION="@sidenvimtree-python-command"
 
 TREE_POSITION="left"
-TREE_POSITION_OPTION="@sidebar-tree-position"
+TREE_POSITION_OPTION="@sidenvimtree-tree-position"
 
 TREE_WIDTH="40"
-TREE_WIDTH_OPTION="@sidebar-tree-width"
+TREE_WIDTH_OPTION="@sidenvimtree-tree-width"
 
 SUPPORTED_TMUX_VERSION="1.9"
 
-SIDEBAR_DIR="$HOME/.tmux/sidebar"
+SIDEBAR_DIR="$HOME/.tmux/sidenvimtree"

@@ -1,24 +1,20 @@
 # file sourced from ./sidebar.tmux
-custom_tree_command="$CURRENT_DIR/scripts/custom_tree.sh"
 
 command_exists() {
 	local command="$1"
 	type "$command" >/dev/null 2>&1
 }
 
-tree_command() {
-	local user_command="$(tree_user_command)"
-	if [ -n "$user_command" ]; then
-		echo "$user_command"
-	elif command_exists "tree"; then
-		echo "$TREE_COMMAND"
-	else
-		echo "$custom_tree_command"
-	fi
+refresh_interval() {
+	get_tmux_option "$REFRESH_INTERVAL_OPTION" "$REFRESH_INTERVAL"
 }
 
-tree_user_command() {
-	get_tmux_option "$TREE_COMMAND_OPTION" ""
+nvim_command() {
+	get_tmux_option "$NVIM_COMMAND_OPTION" "$NVIM_COMMAND"
+}
+
+python_command() {
+	get_tmux_option "$PYTHON_COMMAND_OPTION" "$PYTHON_COMMAND"
 }
 
 tree_key() {
@@ -27,10 +23,6 @@ tree_key() {
 
 tree_focus_key() {
 	get_tmux_option "$TREE_FOCUS_OPTION" "$TREE_FOCUS_KEY"
-}
-
-tree_pager() {
-	get_tmux_option "$TREE_PAGER_OPTION" "$TREE_PAGER"
 }
 
 tree_position() {
