@@ -3,13 +3,9 @@
 Customize `tmux-side-nvim-tree` by placing options in `.tmux.conf` and reloading Tmux
 environment.
 
-> Specify Neovim path (default: `nvim`)
+> Can I change the refresh rate? (default: 0.5)
 
-    set -g @sidenvimtree-nvim-command '/path/to/nvim'
-
-> Specify Python path (default: `python3`)
-
-    set -g @sidenvimtree-python-command '/path/to/python3'
+    set -g @sidenvimtree-refresh-interval '0.1'
 
 > Can I have the sidebar on the right?
 
@@ -28,4 +24,12 @@ environment.
 default!
 
     set -g @sidenvimtree-tree-width '60'
+
+> Specify Neovim path (default: `nvim`)
+
+    set -g @sidenvimtree-nvim-command '/path/to/nvim'
+
+> Specify Python path (default: `python3`)
+
+    set -g @sidenvimtree-python-command '/path/to/python3'
 
