@@ -1,7 +1,7 @@
 # Tmux Side-Nvim-Tree
 
-`tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) file explorer,  
-With additional cool features like:
+`tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) file explorer,
+with additional cool features like:
 
 - Automatic updates on Nvim-Tree as you change directory in shell.
 - Nvim-Tree to shell interaction possible with [tmuxpaste.vim](https://github.com/kiyoon/tmuxpaste.vim).
@@ -43,8 +43,20 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 
     set -g @plugin 'kiyoon/tmux-side-nvim-tree'
 
-Hit `prefix + I` to fetch the plugin and source it. You should now be able to
-use the plugin.
+Hit `prefix + I` to fetch the plugin and source it.
+
+Make sure you have Neovim and [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) installed.  
+You should now be able to use the plugin.
+
+#### Helpful installation guides
+
+If you want to follow my setup just like in the demo, here are all the configuration tips.
+
+- One-liner to locally install [Neovim](https://github.com/kiyoon/neovim-local-install) and [Tmux](https://github.com/kiyoon/tmux-local-install) without root permission.
+  - Or, [tmux appimage download](https://github.com/kiyoon/tmux-appimage)
+- My IDE-like Neovim configuration: [vimrc4ubuntu](https://github.com/kiyoon/vimrc4ubuntu)
+- My tmux configuration: [tmux-conf](https://github.com/kiyoon/tmux-conf)
+- One-liner to [locally install ZSH, plus my configuration](https://github.com/kiyoon/oh-my-zsh-custom) that includes modern plugins for "interactive-ness".
 
 ### Docs
 
