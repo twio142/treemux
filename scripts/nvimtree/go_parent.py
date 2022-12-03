@@ -23,7 +23,7 @@ if nt_node ~= nil then
   end
 
   if folder_found then
-    if not nt_node.open then
+    if nt_node.open then
       nt_api.node.open.edit()
     end
 
