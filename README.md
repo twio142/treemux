@@ -49,6 +49,15 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 Hit `prefix + I` to fetch the plugin and source it.
 
 Make sure you have Neovim and [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) installed.  
+
+(Optional but recommended): install python support for Neovim.  
+```bash
+pip3 install --user pynvim
+```
+
+If not installed, this plugin will have a limited (and clunky)
+Nvim-Tree refreshing capability, using `tmux send-keys` to interact with it.
+
 You should now be able to use the plugin.
 
 #### Helpful installation guides
