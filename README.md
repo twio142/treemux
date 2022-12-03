@@ -1,5 +1,7 @@
 # Tmux Side-Nvim-Tree
 
+Nothing has been this close to IDE!
+
 `tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) file explorer,
 with additional cool features like:
 
@@ -30,8 +32,6 @@ Of course you also get:
 	  No matter which pane layout you prefer, sidebar tries hard not to mess your
 	  pane splits. Open, then close the sidebar and everything should look the same.
 
-
-Nothing has been this close to IDE!
 
 Tested and working on Linux, and Windows WSL2.
 
