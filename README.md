@@ -12,7 +12,10 @@ with additional cool features like:
 
 Of course you also get:
 
-- All features from Nvim-Tree: mouse click, automatic refresh, file icons etc.
+- All features from Nvim-Tree:
+	- **mouse click**
+	- **automatic refresh**
+	- **file icons**
 - All features from tmux-sidebar:
 	- **smart sizing**<br/>
 	  Sidebar remembers its size, so the next time you open it, it will have the
