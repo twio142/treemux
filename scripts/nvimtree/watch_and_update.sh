@@ -86,11 +86,12 @@ fi
 
 while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 	# optional: check if sidebar is running `nvim .`
-	command_pid=$(ps -el | awk "\$5==$side_pane_pid" | awk '{print $4}')
-	if [[ -z $command_pid ]]	# no command is running
-	then
-		echo "Exiting due to side pane having no command running. (pid = $side_pand_pid)"
-		break
+	# This does not work well in Mac..
+	# command_pid=$(ps -el | awk "\$5==$side_pane_pid" | awk '{print $4}')
+	# if [[ -z $command_pid ]]	# no command is running
+	# then
+	# 	echo "Exiting due to side pane having no command running. (pid = $side_pand_pid)"
+	# 	break
 	# else
 	# 	full_command=$(ps --no-headers -u -p $command_pid | awk '{for(i=11;i<=NF;++i)printf $i" "}' | xargs)	# xargs does trimming
 	# 	if [[ "$full_command" != "'$NVIM_COMMAND' . --listen "* ]]
@@ -98,7 +99,7 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 	# 		echo "Exiting due to side pane not running 'nvim . --listen ...'. Instead, it's running: $full_command"
 	# 		break
 	# 	fi
-	fi
+	# fi
 
 	main_pane_cwd=$(readlink -f "/proc/$main_pane_pid/cwd")
 	echo $main_pane_cwd

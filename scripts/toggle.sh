@@ -154,7 +154,9 @@ split_sidebar_left() {
 	fi
 
 	side_pane_root="$(get_nvimtree_root_dir)"
-	nvim_addr="$(mktemp --dry-run -t kiyoon-tmux-sidenvimtree-$PANE_ID.XXXXXX)"
+	# mktemp --dry-run option is needed because the file shouldn't exist.
+	# -u parameter is compatible with MacOS and Linux.
+	nvim_addr="$(mktemp -u -t kiyoon-tmux-sidenvimtree-$PANE_ID.XXXXXX)"
 	local sidebar_id="$(tmux new-window -c "$PANE_CURRENT_PATH" -P -F "#{pane_id}" "'$NVIM_COMMAND' '$side_pane_root' --listen '$nvim_addr'")"
 	tmux join-pane -hb -l "$sidebar_size" -t "$PANE_ID" -s "$sidebar_id"
 
@@ -170,7 +172,9 @@ split_sidebar_left() {
 split_sidebar_right() {
 	local sidebar_size=$(desired_sidebar_size)
 	side_pane_root="$(get_nvimtree_root_dir)"
-	nvim_addr="$(mktemp --dry-run -t kiyoon-tmux-sidenvimtree-$PANE_ID.XXXXXX)"
+	# mktemp --dry-run option is needed because the file shouldn't exist.
+	# -u parameter is compatible with MacOS and Linux.
+	nvim_addr="$(mktemp -u -t kiyoon-tmux-sidenvimtree-$PANE_ID.XXXXXX)"
 	local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$PANE_CURRENT_PATH" -P -F "#{pane_id}" "'$NVIM_COMMAND' '$side_pane_root' --listen '$nvim_addr'")"
 	if [[ $ENABLE_DEBUG_PANE -eq 0 ]]
 	then
