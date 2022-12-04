@@ -5,7 +5,6 @@ import sys
 import pynvim
 
 lua_code = """
-nt_api = require('nvim-tree.api')
 nt_api.tree.find_file('{main_pane_first_child}')
 local nt_node = nt_api.tree.get_node_under_cursor()
 

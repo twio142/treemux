@@ -11,7 +11,6 @@ except ImportError as e:
     sys.exit(50)
 
 lua_code = """
-nt_api = require('nvim-tree.api')
 nt_api.tree.find_file('{main_pane_cwd}')
 local nt_node = nt_api.tree.get_node_under_cursor()
 
@@ -67,6 +66,7 @@ else:
     sys.exit(52)
 
 # If side pane root manually configured, we need to open the cwd.
+nvim.exec_lua("nt_api = require('nvim-tree.api')")
 if side_pane_root != '.':
     nvim.exec_lua(lua_code.format(main_pane_cwd=main_pane_cwd, side_pane_root=side_pane_root))
-    print(nvim.exec_lua('return nt_api.tree.get_nodes().absolute_path'))    # print new root dir
+print(nvim.exec_lua('return nt_api.tree.get_nodes().absolute_path'))    # print new root dir
