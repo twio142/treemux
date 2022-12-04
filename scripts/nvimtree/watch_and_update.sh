@@ -42,7 +42,9 @@ then
 fi
 
 echo "Watching main pane (pid = $main_pane_pid)"
-main_pane_prevcwd=$(readlink -f "/proc/$main_pane_pid/cwd")
+main_pane_prevcwd=$(lsof -a -d cwd -p "$main_pane_pid" 2> /dev/null | awk_by_name '{print $(f["NAME"])}' | tail -n +2)
+# This does not work on MacOS.
+#main_pane_prevcwd=$(readlink -f "/proc/$main_pane_pid/cwd")
 side_pane_root="$main_pane_prevcwd"
 
 # `tmux display` doesn't match strictly and it will give you any pane if not found.
