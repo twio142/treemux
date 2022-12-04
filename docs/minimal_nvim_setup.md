@@ -66,5 +66,5 @@ colorscheme tokyonight-night
 set cursorline
 ```
 
-3. Run `nvim`. It will install plugins automatically.
+3. Run `nvim` which will install plugins automatically. Then `:q` to exit.
 4. Run `nvim .` to see the current directory with Nvim-Tree
