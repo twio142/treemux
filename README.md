@@ -34,7 +34,7 @@ Of course you also get:
 
 Furthermore, it will detect git directory and open that as root, while still opening current directory.
 
-Tested and working on Linux, and Windows WSL2.
+Tested and working on Linux, MacOS and Windows WSL2.
 
 ### Key bindings
 
