@@ -49,6 +49,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 Hit `prefix + I` to fetch the plugin and source it.
 
 Make sure you have Neovim and [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) installed.  
+Not using Vim/Neovim and confused? Here is the [minimal Nvim-Tree configuration file](docs/minimal_nvim_setup.md).
 
 (Optional but recommended): install python support for Neovim.  
 ```bash
