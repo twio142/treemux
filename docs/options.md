@@ -33,3 +33,6 @@ default!
 
     set -g @sidenvimtree-python-command '/path/to/python3'
 
+> Dev debug mode which will open another pane for debugging.
+
+    set -g @sidenvimtree-enable-debug-pane '1'

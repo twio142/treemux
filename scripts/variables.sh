@@ -24,6 +24,9 @@ TREE_POSITION_OPTION="@sidenvimtree-tree-position"
 TREE_WIDTH="40"
 TREE_WIDTH_OPTION="@sidenvimtree-tree-width"
 
+ENABLE_DEBUG_PANE="0"
+ENABLE_DEBUG_PANE_OPTION="@sidenvimtree-enable-debug-pane"
+
 SUPPORTED_TMUX_VERSION="1.9"
 
 SIDEBAR_DIR="$HOME/.tmux/sidenvimtree"

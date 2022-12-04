@@ -1,25 +1,27 @@
 #!/usr/bin/env bash
 # Author: Kiyoon Kim (https://github.com/kiyoon)
 
-if [[ $# -ne 6 ]]; then
-	echo "Usage: $0 <MAIN_PANE_ID> <SIDE_PANE_ID> <NVIM_ADDR> <REFRESH_INTERVAL> <NVIM_COMMAND> <PYTHON_COMMAND>"
+if [[ $# -ne 7 ]]; then
+	echo "Usage: $0 <MAIN_PANE_ID> <SIDE_PANE_ID> <SIDE_PANE_ROOT> <NVIM_ADDR> <REFRESH_INTERVAL> <NVIM_COMMAND> <PYTHON_COMMAND>"
 	echo "Arthor: Kiyoon Kim (https://github.com/kiyoon)"
 	echo "Track directory changes in the main pane, and refresh the side pane's Nvim-Tree every <REFRESH_INTERVAL> seconds."
 	echo "When going into child directories (cd dir), the side pane will keep the root directory."
 	echo "When going out of the root directory (cd /some/dir), the side pane will change the root directory to that of the main pane."
-	exit 1
+	exit 100
 fi
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 MAIN_PANE_ID="$1"
 SIDE_PANE_ID="$2"
-NVIM_ADDR="$3"
-REFRESH_INTERVAL="$4"
-NVIM_COMMAND="$5"
-PYTHON_COMMAND="$6"
+SIDE_PANE_ROOT="$3"
+NVIM_ADDR="$4"
+REFRESH_INTERVAL="$5"
+NVIM_COMMAND="$6"
+PYTHON_COMMAND="$7"
 
 echo "$0 $@"
+echo "OSTYPE: $OSTYPE"
 
 main_pane_exists=1
 side_pane_exists=1
@@ -32,7 +34,8 @@ tmux list-panes -t "$SIDE_PANE_ID" &> /dev/null
 main_pane_pid=$(tmux display -pt "$MAIN_PANE_ID" '#{pane_pid}')
 if [[ -z $main_pane_pid ]]
 then
-	exit 1
+	echo "Main pane $MAIN_PANE_ID does not exist."
+	exit 101
 fi
 
 echo "Watching main pane (pid = $main_pane_pid)"
@@ -43,12 +46,43 @@ side_pane_root="$main_pane_prevcwd"
 side_pane_pid=$(tmux display -pt "$SIDE_PANE_ID" '#{pane_pid}')
 if [[ -z $side_pane_pid ]]
 then
-	exit 1
+	echo "Side pane $SIDE_PANE_ID not found. Exiting."
+	exit 102
 fi
 
 echo "Updating side pane (Nvim-Tree, pid = $side_pane_pid)"
 
-sleep 2
+echo "Initial main pane cwd: $main_pane_prevcwd"
+echo "Initial nvim-tree pane root: $SIDE_PANE_ROOT"
+echo "Waiting for the nvim-tree.."
+nvimtree_root_dir=$("$PYTHON_COMMAND" "$CURRENT_DIR/wait_nvimtreeinit_and_open_dir.py" "$NVIM_ADDR" "$main_pane_prevcwd" "$SIDE_PANE_ROOT")
+exit_code=$?
+if [[ $exit_code -ne 0 ]]
+then
+	echo "$CURRENT_DIR/wait_nvimtreeinit_and_open_dir.py exited with code $exit_code."
+	if [[ $exit_code -eq 50 ]]
+	then
+		echo "pynvim not installed. Continuing without pynvim but recommended to install it."
+		sleep 2
+	elif [[ $exit_code -eq 51 ]]
+	then
+		echo "Nvim is not installed or could not be loaded. Exiting.."
+		exit 103
+	elif [[ $exit_code -eq 52 ]]
+	then
+		echo "Nvim-Tree is not installed or could not be loaded. Exiting.."
+		echo "$nvimtree_root_dir"	# error message
+		exit 104
+	else
+		echo "Unknown error. Exiting.."
+		echo "$nvimtree_root_dir"	# error message
+		exit 105
+	fi
+else
+	echo "Nvim-Tree detected!"
+	echo "Detected side pane root: $nvimtree_root_dir"
+	side_pane_root="$nvimtree_root_dir"
+fi
 
 while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 	# optional: check if sidebar is running `nvim .`

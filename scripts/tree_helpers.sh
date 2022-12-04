@@ -32,3 +32,7 @@ tree_position() {
 tree_width() {
 	get_tmux_option "$TREE_WIDTH_OPTION" "$TREE_WIDTH"
 }
+
+enable_debug_pane() {
+	get_tmux_option "$ENABLE_DEBUG_PANE_OPTION" "$ENABLE_DEBUG_PANE"
+}
