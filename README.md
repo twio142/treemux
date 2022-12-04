@@ -2,7 +2,7 @@
 
 Nothing has been this close to an IDE!
 
-`tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) file explorer,
+`tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer,
 with additional cool features like:
 
 - Automatic updates on Nvim-Tree as you change directory in shell.
@@ -48,7 +48,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 Hit `prefix + I` to fetch the plugin and source it.
 
-Make sure you have Neovim and [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) installed.  
+Make sure you have Neovim and [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) installed.  
 
 (Optional but recommended): install python support for Neovim.  
 ```bash
