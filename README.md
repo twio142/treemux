@@ -1,6 +1,6 @@
 # Tmux Side-Nvim-Tree
 
-Nothing has been this close to IDE!
+Nothing has been this close to an IDE!
 
 `tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree) file explorer,
 with additional cool features like:
