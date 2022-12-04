@@ -10,7 +10,7 @@ with additional cool features like:
   - You can copy absolute path from Nvim-Tree and paste into the shell.
   - Change directory, execute programs, open with vim and anything you can imagine!
 
-![screenshot](/screenshot.gif)
+<img src="https://user-images.githubusercontent.com/12980409/205471418-1eef8eb1-bd63-40f1-b777-3f92d4d71641.gif" width="100%"/>
 
 Of course you also get:
 
