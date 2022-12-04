@@ -12,6 +12,8 @@ fi
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+source "$CURRENT_DIR"/awk_helper.sh
+
 MAIN_PANE_ID="$1"
 SIDE_PANE_ID="$2"
 SIDE_PANE_ROOT="$3"
@@ -21,7 +23,8 @@ NVIM_COMMAND="$6"
 PYTHON_COMMAND="$7"
 
 echo "$0 $@"
-echo "OSTYPE: $OSTYPE"
+echo "OSTYPE: $OSTYPE"	# log OS type
+tmux -V					# log tmux version
 
 main_pane_exists=1
 side_pane_exists=1
@@ -101,8 +104,16 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 	# 	fi
 	# fi
 
-	main_pane_cwd=$(readlink -f "/proc/$main_pane_pid/cwd")
+	main_pane_cwd=$(lsof -a -d cwd -p "$main_pane_pid" 2> /dev/null | awk_by_name '{print $(f["NAME"])}' | tail -n +2)
+	# This does not work on MacOS.
+	#main_pane_cwd=$(readlink -f "/proc/$main_pane_pid/cwd")
 	echo $main_pane_cwd
+
+	if [[ -z "$main_pane_cwd" ]]
+	then
+		echo "Can't find main pane's cwd. Exiting.."
+		break
+	fi
 
 	# Dir changed?
 	if [[ "$main_pane_cwd" != "$main_pane_prevcwd" ]]
