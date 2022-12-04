@@ -7,10 +7,10 @@ Here's the minimal setup guide for those who don't want to learn how vim plugins
 2. Put this init.vim into `~/.config/nvim/init.vim`
 
 ```nvim
-# Neovim init.vim
+" Neovim init.vim
 
-set⋅runtimepath^=~/.vim⋅runtimepath+=~/.vim/after
-let⋅&packpath⋅=⋅&runtimepath
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
 
 " Remove the white status bar below
 set laststatus=0 ruler
