@@ -5,7 +5,7 @@ environment.
 
 > Can I change the refresh rate? (default: 0.5, 2, 5)
 
-    set -g @sidenvimtree-refresh-interval 0.1					# the focus is on the main pane or the side Nvim-Tree.
+    set -g @sidenvimtree-refresh-interval 0.1			# the focus is on the main pane or the side Nvim-Tree.
     set -g @sidenvimtree-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
     set -g @sidenvimtree-refresh-interval-inactive-window 3		# you left the window.
 
