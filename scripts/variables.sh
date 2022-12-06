@@ -12,6 +12,12 @@ TREE_FOCUS_OPTION="@sidenvimtree-tree-focus"
 REFRESH_INTERVAL="0.5"
 REFRESH_INTERVAL_OPTION="@sidenvimtree-refresh-interval"
 
+REFRESH_INTERVAL_INACTIVE_PANE="2"
+REFRESH_INTERVAL_INACTIVE_PANE_OPTION="@sidenvimtree-refresh-interval-inactive-pane"
+
+REFRESH_INTERVAL_INACTIVE_WINDOW="5"
+REFRESH_INTERVAL_INACTIVE_WINDOW="@sidenvimtree-refresh-interval-inactive-window"
+
 NVIM_COMMAND="nvim"
 NVIM_COMMAND_OPTION="@sidenvimtree-nvim-command"
 

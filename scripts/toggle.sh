@@ -13,8 +13,10 @@ PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f2)"   # "python3"
 POSITION="$(echo "$ARGS" | cut -d',' -f3)"   # "right"
 SIZE="$(echo "$ARGS"     | cut -d',' -f4)"   # "20"
 REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f5)"   # "0.5"
-ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f6)"   # "0"
-FOCUS="$(echo "$ARGS"    | cut -d',' -f7)"   # "focus"
+REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f6)"   # "2"
+REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f7)"   # "5"
+ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f8)"   # "0"
+FOCUS="$(echo "$ARGS"    | cut -d',' -f9)"   # "focus"
 
 PANE_WIDTH="$(get_pane_info "$PANE_ID" "#{pane_width}")"
 PANE_CURRENT_PATH="$(get_pane_info "$PANE_ID" "#{pane_current_path}")"
@@ -163,9 +165,9 @@ split_sidebar_left() {
 
 	if [[ $ENABLE_DEBUG_PANE -eq 0 ]]
 	then
-		"$CURRENT_DIR/nvimtree/watch_and_update.sh" "$PANE_ID" "$sidebar_id" "$NVIMTREE_ROOT_DIR" "$nvim_addr" $REFRESH_INTERVAL "$NVIM_COMMAND" "$PYTHON_COMMAND" &>/dev/null &
+		"$CURRENT_DIR/nvimtree/watch_and_update.sh" "$PANE_ID" "$sidebar_id" "$NVIMTREE_ROOT_DIR" "$nvim_addr" "$REFRESH_INTERVAL" "$REFRESH_INTERVAL_INACTIVE_PANE" "$REFRESH_INTERVAL_INACTIVE_WINDOW" "$NVIM_COMMAND" "$PYTHON_COMMAND" &>/dev/null &
 	else
-		local sidebar_id2="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" "'$CURRENT_DIR/nvimtree/watch_and_update.sh' '$PANE_ID' '$sidebar_id' '$NVIMTREE_ROOT_DIR' '$nvim_addr' $REFRESH_INTERVAL '$NVIM_COMMAND' '$PYTHON_COMMAND'; sleep 100")"
+		local sidebar_id2="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" "'$CURRENT_DIR/nvimtree/watch_and_update.sh' '$PANE_ID' '$sidebar_id' '$NVIMTREE_ROOT_DIR' '$nvim_addr' "$REFRESH_INTERVAL" "$REFRESH_INTERVAL_INACTIVE_PANE" "$REFRESH_INTERVAL_INACTIVE_WINDOW" '$NVIM_COMMAND' '$PYTHON_COMMAND'; sleep 100")"
 	fi
 	echo "$sidebar_id"
 }
@@ -179,9 +181,9 @@ split_sidebar_right() {
 	local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" "'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr'")"
 	if [[ $ENABLE_DEBUG_PANE -eq 0 ]]
 	then
-		"$CURRENT_DIR/nvimtree/watch_and_update.sh" "$PANE_ID" "$sidebar_id" "$NVIMTREE_ROOT_DIR" "$nvim_addr" $REFRESH_INTERVAL "$NVIM_COMMAND" "$PYTHON_COMMAND" &> /dev/null &
+		"$CURRENT_DIR/nvimtree/watch_and_update.sh" "$PANE_ID" "$sidebar_id" "$NVIMTREE_ROOT_DIR" "$nvim_addr" "$REFRESH_INTERVAL" "$REFRESH_INTERVAL_INACTIVE_PANE" "$REFRESH_INTERVAL_INACTIVE_WINDOW" "$NVIM_COMMAND" "$PYTHON_COMMAND" &> /dev/null &
 	else
-		local sidebar_id2="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" "'$CURRENT_DIR/nvimtree/watch_and_update.sh' '$PANE_ID' '$sidebar_id' '$NVIMTREE_ROOT_DIR' '$nvim_addr' $REFRESH_INTERVAL '$NVIM_COMMAND' '$PYTHON_COMMAND'; sleep 100")"
+		local sidebar_id2="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" "'$CURRENT_DIR/nvimtree/watch_and_update.sh' '$PANE_ID' '$sidebar_id' '$NVIMTREE_ROOT_DIR' '$nvim_addr' "$REFRESH_INTERVAL" "$REFRESH_INTERVAL_INACTIVE_PANE" "$REFRESH_INTERVAL_INACTIVE_WINDOW" '$NVIM_COMMAND' '$PYTHON_COMMAND'; sleep 100")"
 		tmux join-pane -hb -l "$sidebar_size" -t "$PANE_ID" -s "$sidebar_id2"
 	fi
 	echo "$sidebar_id"

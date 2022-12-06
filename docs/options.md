@@ -3,9 +3,11 @@
 Customize `tmux-side-nvim-tree` by placing options in `.tmux.conf` and reloading Tmux
 environment.
 
-> Can I change the refresh rate? (default: 0.5)
+> Can I change the refresh rate? (default: 0.5, 2, 5)
 
-    set -g @sidenvimtree-refresh-interval '0.1'
+    set -g @sidenvimtree-refresh-interval 0.1					# the focus is on the main pane or the side Nvim-Tree.
+    set -g @sidenvimtree-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
+    set -g @sidenvimtree-refresh-interval-inactive-window 3		# you left the window.
 
 > Can I have the sidebar on the right?
 
@@ -23,7 +25,7 @@ environment.
 > The default sidebar width is 40 columns. I want the sidebar to be wider by
 default!
 
-    set -g @sidenvimtree-tree-width '60'
+    set -g @sidenvimtree-tree-width 60
 
 > Specify Neovim path (default: `nvim`)
 
@@ -35,4 +37,4 @@ default!
 
 > Dev debug mode which will open another pane for debugging.
 
-    set -g @sidenvimtree-enable-debug-pane '1'
+    set -g @sidenvimtree-enable-debug-pane 1

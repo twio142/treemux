@@ -15,10 +15,12 @@ set_default_key_binding_options() {
 	local tree_position="$(tree_position)"
 	local tree_width="$(tree_width)"
 	local refresh_interval="$(refresh_interval)"
+	local refresh_interval_inactive_pane="$(refresh_interval_inactive_pane)"
+	local refresh_interval_inactive_window="$(refresh_interval_inactive_window)"
 	local enable_debug_pane="$(enable_debug_pane)"
 
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval},${enable_debug_pane}"
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval},${enable_debug_pane},focus"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane}"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "${nvim_command},${python_command},${tree_position},${tree_width},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane},focus"
 }
 
 set_key_bindings() {

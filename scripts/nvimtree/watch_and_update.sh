@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Author: Kiyoon Kim (https://github.com/kiyoon)
 
-if [[ $# -ne 7 ]]; then
-	echo "Usage: $0 <MAIN_PANE_ID> <SIDE_PANE_ID> <SIDE_PANE_ROOT> <NVIM_ADDR> <REFRESH_INTERVAL> <NVIM_COMMAND> <PYTHON_COMMAND>"
+if [[ $# -ne 9 ]]; then
+	echo "Usage: $0 <MAIN_PANE_ID> <SIDE_PANE_ID> <SIDE_PANE_ROOT> <NVIM_ADDR> <REFRESH_INTERVAL> <REFRESH_INTERVAL_INACTIVE_PANE> <REFRESH_INTERVAL_INACTIVE_WINDOW> <NVIM_COMMAND> <PYTHON_COMMAND>"
 	echo "Arthor: Kiyoon Kim (https://github.com/kiyoon)"
 	echo "Track directory changes in the main pane, and refresh the side pane's Nvim-Tree every <REFRESH_INTERVAL> seconds."
 	echo "When going into child directories (cd dir), the side pane will keep the root directory."
@@ -19,8 +19,10 @@ SIDE_PANE_ID="$2"
 SIDE_PANE_ROOT="$3"
 NVIM_ADDR="$4"
 REFRESH_INTERVAL="$5"
-NVIM_COMMAND="$6"
-PYTHON_COMMAND="$7"
+REFRESH_INTERVAL_INACTIVE_PANE="$6"
+REFRESH_INTERVAL_INACTIVE_WINDOW="$7"
+NVIM_COMMAND="$8"
+PYTHON_COMMAND="$9"
 
 echo "$0 $@"
 echo "OSTYPE: $OSTYPE"	# log OS type
@@ -231,7 +233,20 @@ while [[ $main_pane_exists -eq 1 ]] && [[ $side_pane_exists -eq 1 ]]; do
 		main_pane_prevcwd="$main_pane_cwd"
 	fi
 
-	sleep "$REFRESH_INTERVAL"
+	main_pane_active=$(tmux display -pt "$MAIN_PANE_ID" '#{pane_active}')
+	side_pane_active=$(tmux display -pt "$SIDE_PANE_ID" '#{pane_active}')
+	window_active=$(tmux display -pt "$MAIN_PANE_ID" '#{window_active}')
+
+	if [[ "$main_pane_active" -eq 1 || "$side_pane_active" -eq 1 ]]; then
+		sleep "$REFRESH_INTERVAL"
+	elif [[ "$window_active" -eq 1 ]]; then
+		# Pane inactive but still in the same window
+		sleep "$REFRESH_INTERVAL_INACTIVE_PANE"
+	else
+		# Window inactive
+		sleep "$REFRESH_INTERVAL_INACTIVE_WINDOW"
+	fi
+
 	tmux list-panes -t "$MAIN_PANE_ID" &> /dev/null
 	[ "$?" -ne 0 ] && main_pane_exists=0
 	tmux list-panes -t "$SIDE_PANE_ID" &> /dev/null
