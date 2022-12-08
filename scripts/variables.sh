@@ -35,4 +35,17 @@ ENABLE_DEBUG_PANE_OPTION="@sidenvimtree-enable-debug-pane"
 
 SUPPORTED_TMUX_VERSION="1.9"
 
-SIDEBAR_DIR="$HOME/.tmux/sidenvimtree"
+sidebar_dir() {
+	local DIR_XDG="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/sidebar"
+	local DIR_OLD="$HOME/.tmux/sidebar"
+
+	if [ -d "$DIR_XDG" ]; then
+		echo "$DIR_XDG"
+	elif [ -d "$DIR_OLD" ]; then
+		echo "$DIR_OLD"
+	else
+		echo "$DIR_XDG"
+	fi
+}
+
+SIDEBAR_DIR="$(sidebar_dir)"
