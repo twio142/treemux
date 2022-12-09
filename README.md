@@ -1,8 +1,8 @@
-# Tmux Side-Nvim-Tree
+# Treemux for Tmux
 
 Nothing has been this close to an IDE!
 
-`tmux-side-nvim-tree` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer,
+`Treemux` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer,
 with additional cool features like:
 
 - Automatic updates on Nvim-Tree as you change directory in shell.
@@ -45,7 +45,7 @@ Tested and working on Linux, MacOS and Windows WSL2.
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @plugin 'kiyoon/tmux-side-nvim-tree'
+    set -g @plugin 'kiyoon/treemux'
 
 Hit `prefix + I` to fetch the plugin and source it.
 
