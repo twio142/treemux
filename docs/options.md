@@ -1,40 +1,40 @@
 ## Options
 
-Customize `tmux-side-nvim-tree` by placing options in `.tmux.conf` and reloading Tmux
+Customize `treemux` by placing options in `.tmux.conf` and reloading Tmux
 environment.
 
 > Can I change the refresh rate? (default: 0.5, 2, 5)
 
-    set -g @sidenvimtree-refresh-interval 0.1			# the focus is on the main pane or the side Nvim-Tree.
-    set -g @sidenvimtree-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
-    set -g @sidenvimtree-refresh-interval-inactive-window 3		# you left the window.
+    set -g @treemux-refresh-interval 0.1			# the focus is on the main pane or the side Nvim-Tree.
+    set -g @treemux-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
+    set -g @treemux-refresh-interval-inactive-window 3		# you left the window.
 
 > Can I have the sidebar on the right?
 
-    set -g @sidenvimtree-tree-position 'right'
+    set -g @treemux-tree-position 'right'
 
 > I don't like the default 'prefix + Tab' key binding. Can I change it to be
 'prefix + e'?
 
-    set -g @sidenvimtree-tree 'e'
+    set -g @treemux-tree 'e'
 
 > How can I change the default 'prefix + Backspace' to be 'prefix + w'?
 
-    set -g @sidenvimtree-tree-focus 'w'
+    set -g @treemux-tree-focus 'w'
 
 > The default sidebar width is 40 columns. I want the sidebar to be wider by
 default!
 
-    set -g @sidenvimtree-tree-width 60
+    set -g @treemux-tree-width 60
 
 > Specify Neovim path (default: `nvim`)
 
-    set -g @sidenvimtree-nvim-command '/path/to/nvim'
+    set -g @treemux-nvim-command '/path/to/nvim'
 
 > Specify Python path (default: `python3`)
 
-    set -g @sidenvimtree-python-command '/path/to/python3'
+    set -g @treemux-python-command '/path/to/python3'
 
 > Dev debug mode which will open another pane for debugging.
 
-    set -g @sidenvimtree-enable-debug-pane 1
+    set -g @treemux-enable-debug-pane 1

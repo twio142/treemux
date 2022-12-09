@@ -2,8 +2,13 @@ get_tmux_option() {
 	local option=$1
 	local default_value=$2
 	local option_value=$(tmux show-option -gqv "$option")
+	local old_option_value=$(tmux show-option -gqv "${option//treemux/sidenvimtree}")
 	if [ -z "$option_value" ]; then
-		echo "$default_value"
+		if [ -z "$old_option_value" ]; then
+			echo "$default_value"
+		else
+			echo "$old_option_value"
+		fi
 	else
 		echo "$option_value"
 	fi
