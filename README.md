@@ -62,16 +62,6 @@ Nvim-Tree refreshing capability, using `tmux send-keys` to interact with it.
 
 You should now be able to use the plugin.
 
-#### Helpful installation guides
-
-If you want to follow my setup just like in the demo, here are all the configuration tips.
-
-- One-liner to locally install [Neovim](https://github.com/kiyoon/neovim-local-install) and [Tmux](https://github.com/kiyoon/tmux-local-install) without root permission.
-  - Or, [tmux appimage download](https://github.com/kiyoon/tmux-appimage)
-- My IDE-like Neovim configuration: [vimrc4ubuntu](https://github.com/kiyoon/vimrc4ubuntu)
-- My tmux configuration: [tmux-conf](https://github.com/kiyoon/tmux-conf)
-- One-liner to [locally install ZSH, plus my configuration](https://github.com/kiyoon/oh-my-zsh-custom) that includes modern plugins for "interactive-ness".
-
 ### Docs
 
 - [customization options](docs/options.md)
