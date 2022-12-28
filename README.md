@@ -12,7 +12,7 @@ with additional cool features like:
 - Open files from Nvim-Tree to Neovim seamlessly, using [nvim-tree-remote.nvim](https://github.com/kiyoon/nvim-tree-remote.nvim).
   - Just open the files (double click) and it will show up in another Neovim!
 
-<img src="https://user-images.githubusercontent.com/12980409/205471418-1eef8eb1-bd63-40f1-b777-3f92d4d71641.gif" width="100%"/>
+<img src="https://user-images.githubusercontent.com/12980409/209864681-a11b3390-d41d-4efc-bb12-a55752e62793.gif" width="100%"/>
 
 Of course you also get:
 
