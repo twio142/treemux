@@ -9,6 +9,12 @@ TREE_OPTION="@treemux-tree"
 TREE_FOCUS_KEY="Bspace"
 TREE_FOCUS_OPTION="@treemux-tree-focus"
 
+IDE_KEY="C-t"
+IDE_OPTION="@treemux-ide"
+
+IDE_FOCUS_KEY="C-e"
+IDE_FOCUS_OPTION="@treemux-ide-focus"
+
 REFRESH_INTERVAL="0.5"
 REFRESH_INTERVAL_OPTION="@treemux-refresh-interval"
 
@@ -20,6 +26,12 @@ REFRESH_INTERVAL_INACTIVE_WINDOW="@treemux-refresh-interval-inactive-window"
 
 NVIM_COMMAND="nvim"
 NVIM_COMMAND_OPTION="@treemux-nvim-command"
+
+TREE_NVIM_INIT_FILE=""
+TREE_NVIM_INIT_FILE_OPTION="@treemux-tree-nvim-init-file"
+
+EDITOR_NVIM_INIT_FILE=""
+EDITOR_NVIM_INIT_FILE_OPTION="@treemux-editor-nvim-init-file"
 
 PYTHON_COMMAND="python3"
 PYTHON_COMMAND_OPTION="@treemux-python-command"

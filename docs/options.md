@@ -1,6 +1,6 @@
 ## Options
 
-Customize `treemux` by placing options in `.tmux.conf` and reloading Tmux
+Customise `treemux` by placing options in `.tmux.conf` and reloading Tmux
 environment.
 
 > Can I change the refresh rate? (default: 0.5, 2, 5)
@@ -21,6 +21,14 @@ environment.
 > How can I change the default 'prefix + Backspace' to be 'prefix + w'?
 
     set -g @treemux-tree-focus 'w'
+
+> How can I change the default 'prefix + C-t' to be 'prefix + t'?
+
+    set -g @treemux-ide 't'
+
+> How can I change the default 'prefix + C-e' to be 'prefix + e'?
+
+    set -g @treemux-ide-focus 'e'
 
 > The default sidebar width is 40 columns. I want the sidebar to be wider by
 default!

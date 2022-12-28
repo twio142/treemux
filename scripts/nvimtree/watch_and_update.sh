@@ -24,6 +24,8 @@ REFRESH_INTERVAL_INACTIVE_WINDOW="$7"
 NVIM_COMMAND="$8"
 PYTHON_COMMAND="$9"
 
+echo "$NVIM_COMMAND"
+
 echo "$0 $@"
 echo "OSTYPE: $OSTYPE"	# log OS type
 tmux -V					# log tmux version

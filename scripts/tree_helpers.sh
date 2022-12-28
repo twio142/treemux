@@ -21,6 +21,14 @@ nvim_command() {
 	get_tmux_option "$NVIM_COMMAND_OPTION" "$NVIM_COMMAND"
 }
 
+tree_nvim_init_file() {
+	get_tmux_option "$TREE_NVIM_INIT_FILE_OPTION" "$TREE_NVIM_INIT_FILE"
+}
+
+editor_nvim_init_file() {
+	get_tmux_option "$EDITOR_NVIM_INIT_FILE_OPTION" "$EDITOR_NVIM_INIT_FILE"
+}
+
 python_command() {
 	get_tmux_option "$PYTHON_COMMAND_OPTION" "$PYTHON_COMMAND"
 }
@@ -31,6 +39,14 @@ tree_key() {
 
 tree_focus_key() {
 	get_tmux_option "$TREE_FOCUS_OPTION" "$TREE_FOCUS_KEY"
+}
+
+ide_key() {
+	get_tmux_option "$IDE_OPTION" "$IDE_KEY"
+}
+
+ide_focus_key() {
+	get_tmux_option "$IDE_FOCUS_OPTION" "$IDE_FOCUS_KEY"
 }
 
 tree_position() {
