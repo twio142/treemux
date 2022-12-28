@@ -60,6 +60,18 @@ EOF
 
 colorscheme tokyonight-night
 set cursorline
+
+" tmuxsend.vim
+nnoremap <silent> - <Plug>(tmuxsend-smart)	" `1-` sends a line to pane .1
+xnoremap <silent> - <Plug>(tmuxsend-smart)	" same, but for visual mode block
+nnoremap <silent> _ <Plug>(tmuxsend-plain)	" `1_` sends a line to pane .1 without adding a new line
+xnoremap <silent> _ <Plug>(tmuxsend-plain)
+nnoremap <silent> <space>- <Plug>(tmuxsend-uid-smart)	" `3<space>-` sends to pane %3
+xnoremap <silent> <space>- <Plug>(tmuxsend-uid-smart)
+nnoremap <silent> <space>_ <Plug>(tmuxsend-uid-plain)
+xnoremap <silent> <space>_ <Plug>(tmuxsend-uid-plain)
+nnoremap <silent> <C-_> <Plug>(tmuxsend-tmuxbuffer)		" `<C-_>` yanks to tmux buffer
+xnoremap <silent> <C-_> <Plug>(tmuxsend-tmuxbuffer)
 ```
 
 3. Run `nvim` which will install plugins automatically. Then `:q` to exit.
