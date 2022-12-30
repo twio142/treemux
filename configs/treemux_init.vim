@@ -26,8 +26,9 @@ call plug#begin()
 Plug 'kiyoon/tmuxsend.vim'
 Plug 'kiyoon/nvim-tree-remote.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'aserowy/tmux.nvim'
 
 call plug#end()
 
@@ -105,6 +106,10 @@ nvim_tree.setup {
   },
 }
 EOF
+
+" Navigate tmux, and nvim splits.
+" Sync nvim buffer with tmux buffer.
+lua require("tmux").setup({ copy_sync = { enable = true, sync_clipboard = false, sync_registers = true }, resize = { enable_default_keybindings = false } })
 
 colorscheme tokyonight-night
 set cursorline

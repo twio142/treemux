@@ -53,6 +53,10 @@ tree_position() {
 	get_tmux_option "$TREE_POSITION_OPTION" "$TREE_POSITION"
 }
 
+editor_position() {
+	get_tmux_option "$EDITOR_POSITION_OPTION" "$EDITOR_POSITION"
+}
+
 tree_width() {
 	get_tmux_option "$TREE_WIDTH_OPTION" "$TREE_WIDTH"
 }

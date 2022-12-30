@@ -42,6 +42,8 @@ Tested and working on Linux, MacOS and Windows WSL2.
 
 - `prefix + Tab` - toggle sidebar with a directory tree
 - `prefix + Backspace` - toggle sidebar and move cursor to it (focus it)
+
+NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tree without entering this mode.  
 - `prefix + C-t` - enter instant IDE mode
 - `prefix + C-e` - enter instant IDE mode and focus on the Nvim-Tree
 
@@ -66,6 +68,16 @@ pip3 install --user pynvim
 ```
 
 You should now be able to use the plugin.
+
+### Updating the plugin
+
+Not only updating the plugin itself (`prefix + U`),  
+you need to also update the neovim plugins.  
+Run this from the side tree:
+
+```vim
+:PlugUpdate
+```
 
 ### Docs
 

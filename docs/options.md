@@ -9,9 +9,13 @@ environment.
     set -g @treemux-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
     set -g @treemux-refresh-interval-inactive-window 3		# you left the window.
 
-> Can I have the sidebar on the right?
+> Can I have the sidebar on the right? (supports left/right)
 
     set -g @treemux-tree-position 'right'
+
+> Can I have the editor on the bottom? (supports top/bottom/left/right)
+
+    set -g @treemux-editor-position 'bottom'
 
 > I don't like the default 'prefix + Tab' key binding. Can I change it to be
 'prefix + e'?

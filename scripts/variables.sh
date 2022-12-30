@@ -39,6 +39,9 @@ PYTHON_COMMAND_OPTION="@treemux-python-command"
 TREE_POSITION="left"
 TREE_POSITION_OPTION="@treemux-tree-position"
 
+EDITOR_POSITION="up"
+EDITOR_POSITION_OPTION="@treemux-editor-position"
+
 TREE_WIDTH="40"
 TREE_WIDTH_OPTION="@treemux-tree-width"
 
