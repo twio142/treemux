@@ -8,19 +8,18 @@ source "$CURRENT_DIR/variables.sh"
 # script global vars
 ARGS="$1"               # example args format: "ide,nvim,,,python3,right,20,0.5,2,5,0,focus"
 PANE_ID="$2"
-SIDEBAR_OR_IDE="$(echo "$ARGS"  | cut -d',' -f1)"   # "sidebar" or "ide"
-NVIM_COMMAND="$(echo "$ARGS"  | cut -d',' -f2)"   # "nvim"
-TREE_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f3)"   # "~/.tmux/plugins/treemux/configs/treemux_init.vim"
-EDITOR_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f4)"   # ""
-PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f5)"   # "python3"
-POSITION="$(echo "$ARGS" | cut -d',' -f6)"   # "right"
-EDITOR_POSITION="$(echo "$ARGS" | cut -d',' -f7)"   # "top"
-SIZE="$(echo "$ARGS"     | cut -d',' -f8)"   # "20"
-REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f9)"   # "0.5"
-REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f10)"   # "2"
-REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f11)"   # "5"
-ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f12)"   # "0"
-FOCUS="$(echo "$ARGS"    | cut -d',' -f13)"   # "focus"
+NVIM_COMMAND="$(echo "$ARGS"  | cut -d',' -f1)"   # "nvim"
+TREE_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f2)"   # "~/.tmux/plugins/treemux/configs/treemux_init.vim"
+EDITOR_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f3)"   # ""
+PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f4)"   # "python3"
+POSITION="$(echo "$ARGS" | cut -d',' -f5)"   # "right"
+EDITOR_POSITION="$(echo "$ARGS" | cut -d',' -f6)"   # "top"
+SIZE="$(echo "$ARGS"     | cut -d',' -f7)"   # "20"
+REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f8)"   # "0.5"
+REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f9)"   # "2"
+REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f10)"   # "5"
+ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f11)"   # "0"
+FOCUS="$(echo "$ARGS"    | cut -d',' -f12)"   # "focus"
 
 # If you add arguments, make sure you change from kill_sidebar() as well.
 
@@ -248,37 +247,6 @@ split_sidebar_right() {
 	echo "$sidebar_id $editor_nvim_socket_path"
 }
 
-create_ide() {
-	local position="$1" # left / right
-	local return_str="$(split_sidebar_${position})"
-	local sidebar_id="$(echo "$return_str" | cut -d ' ' -f 1)"
-	local editor_nvim_socket_path="$(echo "$return_str" | cut -d ' ' -f 2)"
-	register_sidebar "$sidebar_id"
-	tmux last-pane
-
-	tmux split-window -v -c "#{pane_current_path}"
-	if [[ -z "$EDITOR_NVIM_INIT_FILE" ]]
-	then
-		tmux send-keys "nvim --listen '$editor_nvim_socket_path'" Enter
-	else
-		tmux send-keys "nvim --listen '$editor_nvim_socket_path' -u '$EDITOR_NVIM_INIT_FILE'" Enter
-	fi
-
-	tmux swap-pane -U 
-	if no_focus; then
-		tmux select-pane -t "$PANE_ID"
-	else
-		tmux select-pane -t "$sidebar_id"
-	fi
-
-	if [[ -z "$EDITOR_NVIM_INIT_FILE" ]]
-	then
-		tmux set-buffer -b "treemux_nvim_editor" "nvim --listen $editor_nvim_socket_path"
-	else
-		tmux set-buffer -b "treemux_nvim_editor" "nvim --listen $editor_nvim_socket_path -u $EDITOR_NVIM_INIT_FILE"
-	fi
-}
-
 create_sidebar() {
 	local position="$1" # left / right
 	local return_str="$(split_sidebar_${position})"
@@ -330,19 +298,10 @@ toggle_sidebar() {
 	else
 		exit_if_pane_too_narrow
 
-		if [[ $SIDEBAR_OR_IDE == "sidebar" ]]
-		then
-			if sidebar_left; then
-				create_sidebar "left"
-			else
-				create_sidebar "right"
-			fi
+		if sidebar_left; then
+			create_sidebar "left"
 		else
-			if sidebar_left; then
-				create_ide "left"
-			else
-				create_ide "right"
-			fi
+			create_sidebar "right"
 		fi
 	fi
 }

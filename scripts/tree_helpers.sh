@@ -41,14 +41,6 @@ tree_focus_key() {
 	get_tmux_option "$TREE_FOCUS_OPTION" "$TREE_FOCUS_KEY"
 }
 
-ide_key() {
-	get_tmux_option "$IDE_OPTION" "$IDE_KEY"
-}
-
-ide_focus_key() {
-	get_tmux_option "$IDE_FOCUS_OPTION" "$IDE_FOCUS_KEY"
-}
-
 tree_position() {
 	get_tmux_option "$TREE_POSITION_OPTION" "$TREE_POSITION"
 }

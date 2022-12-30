@@ -9,12 +9,6 @@ TREE_OPTION="@treemux-tree"
 TREE_FOCUS_KEY="Bspace"
 TREE_FOCUS_OPTION="@treemux-tree-focus"
 
-IDE_KEY="C-t"
-IDE_OPTION="@treemux-ide"
-
-IDE_FOCUS_KEY="C-e"
-IDE_FOCUS_OPTION="@treemux-ide-focus"
-
 REFRESH_INTERVAL="0.5"
 REFRESH_INTERVAL_OPTION="@treemux-refresh-interval"
 
