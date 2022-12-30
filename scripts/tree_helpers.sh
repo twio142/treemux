@@ -45,12 +45,16 @@ tree_position() {
 	get_tmux_option "$TREE_POSITION_OPTION" "$TREE_POSITION"
 }
 
+tree_width() {
+	get_tmux_option "$TREE_WIDTH_OPTION" "$TREE_WIDTH"
+}
+
 editor_position() {
 	get_tmux_option "$EDITOR_POSITION_OPTION" "$EDITOR_POSITION"
 }
 
-tree_width() {
-	get_tmux_option "$TREE_WIDTH_OPTION" "$TREE_WIDTH"
+editor_size() {
+	get_tmux_option "$EDITOR_SIZE_OPTION" "$EDITOR_SIZE"
 }
 
 enable_debug_pane() {

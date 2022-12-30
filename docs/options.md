@@ -26,18 +26,15 @@ environment.
 
     set -g @treemux-tree-focus 'w'
 
-> How can I change the default 'prefix + C-t' to be 'prefix + t'?
-
-    set -g @treemux-ide 't'
-
-> How can I change the default 'prefix + C-e' to be 'prefix + e'?
-
-    set -g @treemux-ide-focus 'e'
-
 > The default sidebar width is 40 columns. I want the sidebar to be wider by
 default!
 
     set -g @treemux-tree-width 60
+
+> The default editor size is 70%. I want the nvim editor pane to be wider by
+default!
+
+    set -g @treemux-editor-size '80%'
 
 > Specify Neovim path (default: `nvim`)
 

@@ -13,13 +13,14 @@ TREE_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f2)"   # "~/.tmux/plugins/tree
 EDITOR_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f3)"   # ""
 PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f4)"   # "python3"
 POSITION="$(echo "$ARGS" | cut -d',' -f5)"   # "right"
-EDITOR_POSITION="$(echo "$ARGS" | cut -d',' -f6)"   # "top"
-SIZE="$(echo "$ARGS"     | cut -d',' -f7)"   # "20"
-REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f8)"   # "0.5"
-REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f9)"   # "2"
-REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f10)"   # "5"
-ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f11)"   # "0"
-FOCUS="$(echo "$ARGS"    | cut -d',' -f12)"   # "focus"
+SIZE="$(echo "$ARGS"     | cut -d',' -f6)"   # "20"
+EDITOR_POSITION="$(echo "$ARGS" | cut -d',' -f7)"   # "top"
+EDITOR_SIZE="$(echo "$ARGS" | cut -d',' -f8)"   # "top"
+REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f9)"   # "0.5"
+REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f10)"   # "2"
+REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f11)"   # "5"
+ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f12)"   # "0"
+FOCUS="$(echo "$ARGS"    | cut -d',' -f13)"   # "focus"
 
 # If you add arguments, make sure you change from kill_sidebar() as well.
 
@@ -99,7 +100,7 @@ kill_sidebar() {
 	# get data before killing the sidebar
 	local sidebar_pane_id="$(sidebar_pane_id)"
 	local sidebar_args="$(sidebar_pane_args)"
-	local sidebar_position="$(echo "$sidebar_args" | cut -d',' -f6)" # left or defults to right
+	local sidebar_position="$(echo "$sidebar_args" | cut -d',' -f5)" # left or defults to right
 	local sidebar_width="$(get_pane_info "$sidebar_pane_id" "#{pane_width}")"
 
 	$CURRENT_DIR/save_sidebar_width.sh "$NVIMTREE_ROOT_DIR" "$sidebar_width"
@@ -174,7 +175,8 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
-			'+let g:nvim_tree_remote_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			")"
 	else
@@ -183,7 +185,9 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
-			'+let g:nvim_tree_remote_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
+			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"
@@ -218,7 +222,8 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
-			'+let g:nvim_tree_remote_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			")"
 	else
@@ -227,7 +232,8 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
-			'+let g:nvim_tree_remote_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
+			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"

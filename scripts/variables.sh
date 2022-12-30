@@ -33,11 +33,14 @@ PYTHON_COMMAND_OPTION="@treemux-python-command"
 TREE_POSITION="left"
 TREE_POSITION_OPTION="@treemux-tree-position"
 
+TREE_WIDTH="40"
+TREE_WIDTH_OPTION="@treemux-tree-width"
+
 EDITOR_POSITION="up"
 EDITOR_POSITION_OPTION="@treemux-editor-position"
 
-TREE_WIDTH="40"
-TREE_WIDTH_OPTION="@treemux-tree-width"
+EDITOR_SIZE="70%"
+EDITOR_SIZE_OPTION="@treemux-editor-size"
 
 ENABLE_DEBUG_PANE="0"
 ENABLE_DEBUG_PANE_OPTION="@treemux-enable-debug-pane"
@@ -45,8 +48,8 @@ ENABLE_DEBUG_PANE_OPTION="@treemux-enable-debug-pane"
 SUPPORTED_TMUX_VERSION="1.9"
 
 sidebar_dir() {
-	local DIR_XDG="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/sidebar"
-	local DIR_OLD="$HOME/.tmux/sidebar"
+	local DIR_XDG="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/treemux"
+	local DIR_OLD="$HOME/.tmux/treemux"
 
 	if [ -d "$DIR_XDG" ]; then
 		echo "$DIR_XDG"
