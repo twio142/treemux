@@ -12,7 +12,7 @@ with additional cool features like:
 - Open files from Nvim-Tree to Neovim seamlessly, using [nvim-tree-remote.nvim](https://github.com/kiyoon/nvim-tree-remote.nvim).
   - Just open the files (double click) and it will show up in another Neovim!
 
-<img src="https://user-images.githubusercontent.com/12980409/209864681-a11b3390-d41d-4efc-bb12-a55752e62793.gif" width="100%"/>
+<img src="https://user-images.githubusercontent.com/12980409/210090005-7292ebb5-0114-4883-bacd-e5860dc1af9c.gif" width="100%"/>
 
 Of course you also get:
 
@@ -44,8 +44,6 @@ Tested and working on Linux, MacOS and Windows WSL2.
 - `prefix + Backspace` - toggle sidebar and move cursor to it (focus it)
 
 NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tree without entering this mode.  
-- `prefix + C-t` - enter instant IDE mode
-- `prefix + C-e` - enter instant IDE mode and focus on the Nvim-Tree
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
