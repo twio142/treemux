@@ -36,11 +36,14 @@ TREE_POSITION_OPTION="@treemux-tree-position"
 TREE_WIDTH="40"
 TREE_WIDTH_OPTION="@treemux-tree-width"
 
-EDITOR_POSITION="up"
+EDITOR_POSITION="top"
 EDITOR_POSITION_OPTION="@treemux-editor-position"
 
 EDITOR_SIZE="70%"
 EDITOR_SIZE_OPTION="@treemux-editor-size"
+
+OPEN_FOCUS="editor"
+OPEN_FOCUS_OPTION="@treemux-open-focus"
 
 ENABLE_DEBUG_PANE="0"
 ENABLE_DEBUG_PANE_OPTION="@treemux-enable-debug-pane"

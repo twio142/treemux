@@ -36,6 +36,11 @@ default!
 
     set -g @treemux-editor-size '80%'
 
+> When I open a file from the tree, the focus moves to the editor. I want to 
+stay in the tree!
+
+    set -g @treemux-open-focus 'tree'
+
 > Specify Neovim path (default: `nvim`)
 
     set -g @treemux-nvim-command '/path/to/nvim'

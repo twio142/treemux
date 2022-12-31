@@ -6,7 +6,7 @@ source "$CURRENT_DIR/helpers.sh"
 source "$CURRENT_DIR/variables.sh"
 
 # script global vars
-ARGS="$1"               # example args format: "ide,nvim,,,python3,right,20,0.5,2,5,0,focus"
+ARGS="$1"               # example args format: "nvim,,,python3,right,20,0.5,2,5,0,focus"
 PANE_ID="$2"
 NVIM_COMMAND="$(echo "$ARGS"  | cut -d',' -f1)"   # "nvim"
 TREE_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f2)"   # "~/.tmux/plugins/treemux/configs/treemux_init.vim"
@@ -15,12 +15,13 @@ PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f4)"   # "python3"
 POSITION="$(echo "$ARGS" | cut -d',' -f5)"   # "right"
 SIZE="$(echo "$ARGS"     | cut -d',' -f6)"   # "20"
 EDITOR_POSITION="$(echo "$ARGS" | cut -d',' -f7)"   # "top"
-EDITOR_SIZE="$(echo "$ARGS" | cut -d',' -f8)"   # "top"
-REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f9)"   # "0.5"
-REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f10)"   # "2"
-REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f11)"   # "5"
-ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f12)"   # "0"
-FOCUS="$(echo "$ARGS"    | cut -d',' -f13)"   # "focus"
+EDITOR_SIZE="$(echo "$ARGS" | cut -d',' -f8)"   # "70%"
+OPEN_FOCUS="$(echo "$ARGS" | cut -d',' -f9)"   # "editor"
+REFRESH_INTERVAL="$(echo "$ARGS"    | cut -d',' -f10)"   # "0.5"
+REFRESH_INTERVAL_INACTIVE_PANE="$(echo "$ARGS"    | cut -d',' -f11)"   # "2"
+REFRESH_INTERVAL_INACTIVE_WINDOW="$(echo "$ARGS"    | cut -d',' -f12)"   # "5"
+ENABLE_DEBUG_PANE="$(echo "$ARGS"    | cut -d',' -f13)"   # "0"
+FOCUS="$(echo "$ARGS"    | cut -d',' -f14)"   # "focus"
 
 # If you add arguments, make sure you change from kill_sidebar() as well.
 
@@ -175,8 +176,9 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
+			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
+			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
-			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			")"
 	else
@@ -185,9 +187,9 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
-			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
+			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
+			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
-			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"
@@ -222,8 +224,9 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
+			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
+			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
-			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			")"
 	else
@@ -232,8 +235,9 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_socket_path=\"$editor_nvim_socket_path\"' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
+			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
+			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
-			'+let g:nvim_tree_remote_tmux_editor_size=\"$EDITOR_SIZE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"

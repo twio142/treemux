@@ -84,15 +84,13 @@ nvim_tree.setup {
     side = "left",
     mappings = {
       list = {
-        --{ key = "u", action = "dir_up" },
+        { key = "u", action = "dir_up" },
         { key = "<F1>", action = "toggle_file_info" },
-        -- { key = { "l", "<CR>", "o" }, action = "edit" },
         { key = { "l", "<CR>", "<C-t>", "<2-LeftMouse>" }, action = "remote_tabnew", action_cb = nt_remote.tabnew },
         { key = "h", action = "close_node" },
         { key = { "v", "<C-v>" }, action = "remote_vsplit", action_cb = nt_remote.vsplit },
         { key = "<C-x>", action = "remote_split", action_cb = nt_remote.split },
-        { key = "o", action = "remote_edit", action_cb = nt_remote.edit },
-        -- { key = "v", action = "vsplit" },
+        { key = "o", action = "remote_tabnew_main_pane", action_cb = nt_remote.tabnew_main_pane },
       },
     },
   },

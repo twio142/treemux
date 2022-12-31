@@ -57,6 +57,10 @@ editor_size() {
 	get_tmux_option "$EDITOR_SIZE_OPTION" "$EDITOR_SIZE"
 }
 
+open_focus() {
+	get_tmux_option "$OPEN_FOCUS_OPTION" "$OPEN_FOCUS"
+}
+
 enable_debug_pane() {
 	get_tmux_option "$ENABLE_DEBUG_PANE_OPTION" "$ENABLE_DEBUG_PANE"
 }

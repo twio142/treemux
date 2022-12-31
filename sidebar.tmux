@@ -18,13 +18,14 @@ set_default_key_binding_options() {
 	local tree_width="$(tree_width)"
 	local editor_position="$(editor_position)"
 	local editor_size="$(editor_size)"
+	local open_focus="$(open_focus)"
 	local refresh_interval="$(refresh_interval)"
 	local refresh_interval_inactive_pane="$(refresh_interval_inactive_pane)"
 	local refresh_interval_inactive_window="$(refresh_interval_inactive_window)"
 	local enable_debug_pane="$(enable_debug_pane)"
 
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "${nvim_command},${tree_nvim_init_file},${editor_nvim_init_file},${python_command},${tree_position},${tree_width},${editor_position},${editor_size},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane}"
-	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "${nvim_command},${tree_nvim_init_file},${editor_nvim_init_file},${python_command},${tree_position},${tree_width},${editor_position},${editor_size},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane},focus"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_key}" "${nvim_command},${tree_nvim_init_file},${editor_nvim_init_file},${python_command},${tree_position},${tree_width},${editor_position},${editor_size},${open_focus},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane}"
+	set_tmux_option "${VAR_KEY_PREFIX}-${tree_focus_key}" "${nvim_command},${tree_nvim_init_file},${editor_nvim_init_file},${python_command},${tree_position},${tree_width},${editor_position},${editor_size},${open_focus},${refresh_interval},${refresh_interval_inactive_pane},${refresh_interval_inactive_window},${enable_debug_pane},focus"
 }
 
 set_key_bindings() {
