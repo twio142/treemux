@@ -52,8 +52,9 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 	set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.vim'
     set -g @plugin 'kiyoon/treemux'
 
-- Tip: It is recommended to use a separate init file for this! By default (if you don't set `@treemux-tree-nvim-init-file`) it will load your neovim config but make sure you have Nvim-Tree setup correctly in this case.
-  - You can copy the `treemux_init.vim` file and modify the settings there as you want.
+- The first line sets a separate nvim init file for the tree to separate from the editor.
+  - This contains some plugins to interact neovim in another pane.
+  - You can customise the tree by copying the `treemux_init.vim` file somewhere outside the repo and modifying the file.
 
 Hit `prefix + I` to fetch the plugin and source it.
 
