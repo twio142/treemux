@@ -17,22 +17,22 @@ with additional cool features like:
 Of course you also get:
 
 - All features from Nvim-Tree:
-	- **mouse click**
-	- **automatic refresh**
-	- **file icons**
+  - **mouse click**
+  - **automatic refresh**
+  - **file icons**
 - All features from tmux-sidebar:
-	- **smart sizing**<br/>
-	  Sidebar remembers its size, so the next time you open it, it will have the
-	  **exact same** width. This is a per-directory property, so you can have just
-	  the right size for multiple dirs.
-	- **toggling**<br/>
-	  The same key binding opens and closes the sidebar.
-	- **uninterrupted workflow**<br/>
-	  The main `prefix + Tab` key binding opens a sidebar but **does not** move
-	  cursor to it.
-	- **pane layout stays the same**<br/>
-	  No matter which pane layout you prefer, sidebar tries hard not to mess your
-	  pane splits. Open, then close the sidebar and everything should look the same.
+  - **smart sizing**<br/>
+    Sidebar remembers its size, so the next time you open it, it will have the
+    **exact same** width. This is a per-directory property, so you can have just
+    the right size for multiple dirs.
+  - **toggling**<br/>
+    The same key binding opens and closes the sidebar.
+  - **uninterrupted workflow**<br/>
+    The main `prefix + Tab` key binding opens a sidebar but **does not** move
+    cursor to it.
+  - **pane layout stays the same**<br/>
+    No matter which pane layout you prefer, sidebar tries hard not to mess your
+    pane splits. Open, then close the sidebar and everything should look the same.
 
 Furthermore, it will detect git directory and open that as root, while still opening current directory.
 
@@ -43,14 +43,13 @@ Tested and working on Linux, MacOS and Windows WSL2.
 - `prefix + Tab` - toggle sidebar with a directory tree
 - `prefix + Backspace` - toggle sidebar and move cursor to it (focus it)
 
-NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tree without entering this mode.  
+NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tree without entering this mode.
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
-	
-	set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.vim'
-    set -g @plugin 'kiyoon/treemux'
+set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.lua'
+set -g @plugin 'kiyoon/treemux'
 
 - The first line sets a separate nvim init file for the tree to separate from the editor.
   - This contains some plugins to interact neovim in another pane.
@@ -58,7 +57,8 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 Hit `prefix + I` to fetch the plugin and source it.
 
-Install python support for Neovim.  
+Install python support for Neovim.
+
 ```bash
 pip3 install --user pynvim
 ```
