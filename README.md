@@ -47,13 +47,16 @@ NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tr
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
-Add plugin to the list of TPM plugins in `.tmux.conf`:
+Add plugin to the list of TPM plugins in `.tmux.conf`:  
+
+```tmux
 set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.lua'
 set -g @plugin 'kiyoon/treemux'
+```
 
 - The first line sets a separate nvim init file for the tree to separate from the editor.
   - This contains some plugins to interact neovim in another pane.
-  - You can customise the tree by copying the `treemux_init.vim` file somewhere outside the repo and modifying the file.
+  - You can customise the tree by copying the `treemux_init.lua` file somewhere outside the repo and modifying the file.
 
 Hit `prefix + I` to fetch the plugin and source it.
 
