@@ -76,7 +76,7 @@ you need to also update the neovim plugins.
 Run this from the side tree:
 
 ```vim
-:PlugUpdate
+:Lazy update
 ```
 
 ### Docs
