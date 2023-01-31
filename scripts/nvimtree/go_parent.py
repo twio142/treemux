@@ -16,7 +16,6 @@ if nt_node ~= nil then
     local nt_node = nt_api.tree.get_node_under_cursor()
     if nt_node.absolute_path ~= '{main_pane_first_child}' then
       folder_found = false
-      print('Folder not found in nvim-tree. Is it hidden?')
       nt_api.tree.change_root('{main_pane_first_child}')
     end
   end
@@ -34,9 +33,19 @@ end
 """
 
 nvim_addr = sys.argv[1]
-main_pane_first_child = sys.argv[2]     # directory to close. It is the first child of the directory you're going into.
-side_pane_root = sys.argv[3]            # In case the root has been modified manually, go back to the original root.
+main_pane_first_child = sys.argv[
+    2
+]  # directory to close. It is the first child of the directory you're going into.
+side_pane_root = sys.argv[
+    3
+]  # In case the root has been modified manually, go back to the original root.
 
-nvim = pynvim.attach('socket', path=nvim_addr)
-nvim.exec_lua(lua_code.format(main_pane_first_child=main_pane_first_child, side_pane_root=side_pane_root))
-print(nvim.exec_lua('return nt_api.tree.get_nodes().absolute_path'))    # print new root dir
+nvim = pynvim.attach("socket", path=nvim_addr)
+nvim.exec_lua(
+    lua_code.format(
+        main_pane_first_child=main_pane_first_child, side_pane_root=side_pane_root
+    )
+)
+print(
+    nvim.exec_lua("return nt_api.tree.get_nodes().absolute_path")
+)  # print new root dir
