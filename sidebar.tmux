@@ -40,8 +40,16 @@ set_key_bindings() {
 	done
 }
 
+pathadd() {
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		NEW_PATH="${PATH:+"$PATH:"}$1"
+		tmux set-environment -g PATH "$NEW_PATH"
+	fi
+}
+
 main() {
 	set_default_key_binding_options
 	set_key_bindings
+	pathadd "$SCRIPTS_DIR/bin"
 }
 main

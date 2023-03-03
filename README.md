@@ -47,7 +47,7 @@ NOTE: Instant IDE modes are deprecated. Now you can just open a file from the tr
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
-Add plugin to the list of TPM plugins in `.tmux.conf`:  
+Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 ```tmux
 set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.lua'
@@ -81,6 +81,7 @@ Run this from the side tree:
 
 ### Docs
 
+- You can open a file from the command line to the remote editor split, using `treemux-nvim` command. (e.g. `treemux-nvim file.py`)
 - [customisation options](docs/options.md)
 
 ### License

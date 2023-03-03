@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+if [ -z "$TMUX" ]; then
+	echo "Not in tmux"
+	exit 1
+fi
+
+if [ "$#" -ne 1 ]; then
+	echo "Usage: $0 <path>"
+	echo "Open a file in the current tmux window"
+	exit 1
+fi
+
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPTS_DIR="$CURRENT_DIR/.."
+
+source "$SCRIPTS_DIR/helpers.sh"
+source "$SCRIPTS_DIR/variables.sh"
+source "$SCRIPTS_DIR/tree_helpers.sh"
+
+# xargs to strip whitespace
+NVIM_ADDR="$("$SCRIPTS_DIR"/tmux_current_window_nvim_addr.sh | xargs)"
+
+python_command="$(python_command)"
+python_realpath() {
+	# Cross-platform realpath
+	"$python_command" -c "import os; print(os.path.realpath('$1'))"
+}
+FILE="$(python_realpath "$1")"
+
+if [ -z "$NVIM_ADDR" ]; then
+	echo "No nvim instance foun in current tmux winow. Opening at the current pane."
+	nvim_command="$(nvim_command)"
+	editor_nvim_init_file="$(editor_nvim_init_file)"
+
+	if [ -z "$editor_nvim_init_file" ]; then
+		"$nvim_command" "$FILE"
+	else
+		"$nvim_command" -u "$editor_nvim_init_file" "$FILE"
+	fi
+else
+	# echo "Found nvim instance at $NVIM_ADDR"
+	open_focus="$(open_focus)"
+
+	"$python_command" "$SCRIPTS_DIR"/nvim_command.py "$NVIM_ADDR" "edit $FILE" 0
+	if [ "$open_focus" = "editor" ]; then
+		"$python_command" "$SCRIPTS_DIR"/nvim_command.py "$NVIM_ADDR" 'call system("tmux select-pane -t $TMUX_PANE")' 0
+	fi
+fi
