@@ -66,7 +66,12 @@ Install python support for Neovim.
 pip3 install --user pynvim
 ```
 
-Make sure you have Neovim installed.  
+Make sure you have Neovim and lsof installed.  
+```bash
+nvim --version
+lsof -h  # most distro include this, but maybe Arch wouldn't have it.
+```
+
 You should now be able to use the plugin.
 
 ### Updating the plugin
