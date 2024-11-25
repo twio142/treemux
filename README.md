@@ -2,21 +2,21 @@
 
 Nothing has been this close to an IDE!
 
-`Treemux` opens a sidebar with Neovim's [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer,
+`Treemux` opens a sidebar with Neovim's [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim) file explorer,
 with additional cool features like:
 
-- Automatic updates on Nvim-Tree as you change directory in shell.
-- Nvim-Tree to shell interaction possible with [tmuxsend.vim](https://github.com/kiyoon/tmuxsend.vim).
-  - You can copy absolute path from Nvim-Tree and paste into the shell.
+- Automatic updates on Neo-Tree as you change directory in shell.
+- Neo-Tree to shell interaction possible.
+  - You can copy absolute path from Neo-Tree and paste into the shell.
   - Change directory, execute programs, open with vim and anything you can imagine!
-- Open files from Nvim-Tree to Neovim seamlessly, using [nvim-tree-remote.nvim](https://github.com/kiyoon/nvim-tree-remote.nvim).
+- Open files from Neo-Tree to Neovim seamlessly.
   - Just open the files (double click) and it will show up in another Neovim!
 
 <img src="https://user-images.githubusercontent.com/12980409/210149162-bdfdbed7-c2e7-4616-bcaa-9d83dedda7e3.gif" width="100%"/>
 
 Of course you also get:
 
-- All features from Nvim-Tree:
+- All features from Neo-Tree:
   - **mouse click**
   - **automatic refresh**
   - **file icons**
@@ -79,7 +79,7 @@ Install python support for Neovim.
 /usr/bin/python3 -m pip install --user pynvim
 ```
 
-Make sure you have Neovim and lsof installed.  
+Make sure you have Neovim and lsof installed.
 ```bash
 nvim --version
 lsof -h  # most distro include this, but maybe Arch wouldn't have it.
@@ -89,8 +89,8 @@ You should now be able to use the plugin.
 
 ### Updating the plugin
 
-Not only updating the plugin itself (`prefix + U`),  
-you need to also update the neovim plugins.  
+Not only updating the plugin itself (`prefix + U`),
+you need to also update the neovim plugins.
 Run this from the side tree:
 
 ```vim

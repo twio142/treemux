@@ -5,7 +5,7 @@ environment.
 
 > Can I change the refresh rate? (default: 0.5, 2, 5)
 
-    set -g @treemux-refresh-interval 0.1			# the focus is on the main pane or the side Nvim-Tree.
+    set -g @treemux-refresh-interval 0.1			# the focus is on the main pane or the side Neo-Tree.
     set -g @treemux-refresh-interval-inactive-pane 1		# the focus is not on the pane but you're still in the same window.
     set -g @treemux-refresh-interval-inactive-window 3		# you left the window.
 
@@ -36,7 +36,7 @@ default!
 
     set -g @treemux-editor-size '80%'
 
-> When I open a file from the tree, the focus moves to the editor. I want to 
+> When I open a file from the tree, the focus moves to the editor. I want to
 stay in the tree!
 
     set -g @treemux-open-focus 'tree'
