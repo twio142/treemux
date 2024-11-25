@@ -9,3 +9,20 @@ awk_by_name() {
 		}
 	} '"$1"
 }
+
+awk_last_field() {
+	awk '
+	NR == 1 {
+		column_count = NF;
+	}
+	NR > 1 {
+		for (i = column_count; i <= NF; i++) {
+			if (i > column_count) {
+				printf " ";
+			}
+			printf "%s", $i;
+		}
+		printf "\n";
+	}
+	'
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Use this script to further register another pane's sidebar manually.
-# This is used in nvim-tree-remote.nvim to register the sidebar of the
+# This is used in neo-tree.nvim to register the sidebar of the
 # new split.
 # This way, you can turn off the sidebar from the editor pane.
 
