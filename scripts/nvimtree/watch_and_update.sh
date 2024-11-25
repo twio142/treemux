@@ -4,7 +4,7 @@
 if [[ $# -ne 9 ]]; then
 	echo "Usage: $0 <MAIN_PANE_ID> <SIDE_PANE_ID> <SIDE_PANE_ROOT> <NVIM_ADDR> <REFRESH_INTERVAL> <REFRESH_INTERVAL_INACTIVE_PANE> <REFRESH_INTERVAL_INACTIVE_WINDOW> <NVIM_COMMAND> <PYTHON_COMMAND>"
 	echo "Arthor: Kiyoon Kim (https://github.com/kiyoon)"
-	echo "Track directory changes in the main pane, and refresh the side pane's Nvim-Tree every <REFRESH_INTERVAL> seconds."
+	echo "Track directory changes in the main pane, and refresh the side pane's Neo-Tree every <REFRESH_INTERVAL> seconds."
 	echo "When going into child directories (cd dir), the side pane will keep the root directory."
 	echo "When going out of the root directory (cd /some/dir), the side pane will change the root directory to that of the main pane."
 	exit 100
@@ -59,11 +59,11 @@ then
 	exit 102
 fi
 
-echo "Updating side pane (Nvim-Tree, pid = $side_pane_pid)"
+echo "Updating side pane (Neo-Tree, pid = $side_pane_pid)"
 
 echo "Initial main pane cwd: $main_pane_prevcwd"
-echo "Initial nvim-tree pane root: $SIDE_PANE_ROOT"
-echo "Waiting for the nvim-tree.."
+echo "Initial neo-tree pane root: $SIDE_PANE_ROOT"
+echo "Waiting for the neo-tree.."
 nvimtree_root_dir=$("$PYTHON_COMMAND" "$CURRENT_DIR/wait_nvimtreeinit_and_open_dir.py" "$NVIM_ADDR" "$main_pane_prevcwd" "$SIDE_PANE_ROOT")
 exit_code=$?
 if [[ $exit_code -ne 0 ]]
@@ -79,7 +79,7 @@ then
 		exit 103
 	elif [[ $exit_code -eq 52 ]]
 	then
-		echo "Nvim-Tree is not installed or could not be loaded. Exiting.."
+		echo "Neo-Tree is not installed or could not be loaded. Exiting.."
 		echo "$nvimtree_root_dir"	# error message
 		exit 104
 	else
@@ -88,7 +88,7 @@ then
 		exit 105
 	fi
 else
-	echo "Nvim-Tree detected!"
+	echo "Neo-Tree detected!"
 	echo "Detected side pane root: $nvimtree_root_dir"
 	side_pane_root="$nvimtree_root_dir"
 fi
