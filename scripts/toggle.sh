@@ -171,8 +171,9 @@ split_sidebar_left() {
 	if [[ -z "$TREE_NVIM_INIT_FILE" ]]
 	then
 		local sidebar_id="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
-			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
+			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			'+lua require(\"neo-tree\").setup()' \
+			'+lua require(\"neo-tree.command\").execute({ action = \"show\", dir = vim.fn.getcwd(), reveal_force_cwd = true })' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
 			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
@@ -183,8 +184,7 @@ split_sidebar_left() {
 			")"
 	else
 		local sidebar_id="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
-			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
+			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
 			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
@@ -220,8 +220,9 @@ split_sidebar_right() {
 	if [[ -z "$TREE_NVIM_INIT_FILE" ]]
 	then
 		local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
-			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
+			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			'+lua require(\"neo-tree\").setup()' \
+			'+lua require(\"neo-tree.command\").execute({ action = \"show\", dir = vim.fn.getcwd(), reveal_force_cwd = true })' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
 			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
@@ -232,8 +233,7 @@ split_sidebar_right() {
 			")"
 	else
 		local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
-			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
+			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
 			'+let g:nvim_tree_remote_tmux_split_size=\"$EDITOR_SIZE\"' \
