@@ -1,7 +1,6 @@
--- Neovim init.lua
--- nvim-tree recommends disabling netrw, VIM's built-in file explorer
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- Even if your gitconfig redirects https to ssh (url insteadOf), this will make sure that
+-- plugins will be installed via https instead of ssh.
+vim.env.GIT_CONFIG_GLOBAL = ""
 
 -- Remove the white status bar below
 vim.o.laststatus = 0
@@ -53,7 +52,7 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.del("n", "O", { buffer = bufnr })
 end
 
-require("lazy").setup {
+require("lazy").setup({
   {
     "kiyoon/tmuxsend.vim",
     keys = {
@@ -143,7 +142,24 @@ require("lazy").setup {
       }
     end,
   },
-}
+}, {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        -- List of default plugins can be found here
+        -- https://github.com/neovim/neovim/tree/master/runtime/plugin
+        "gzip",
+        "matchit", -- Extended %. replaced by vim-matchup
+        "matchparen", -- Highlight matching paren. replaced by vim-matchup
+        "netrwPlugin", -- File browser. replaced by nvim-tree, neo-tree, oil.nvim
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
 
 vim.cmd [[ colorscheme tokyonight-night ]]
 vim.o.cursorline = true

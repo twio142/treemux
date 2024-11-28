@@ -8,7 +8,7 @@ source "$CURRENT_DIR/variables.sh"
 # script global vars
 ARGS="$1"               # example args format: "nvim,,,python3,right,20,0.5,2,5,0,focus"
 PANE_ID="$2"
-NVIM_COMMAND="$(echo "$ARGS"  | cut -d',' -f1)"   # "nvim"
+NVIM_COMMAND="$(echo "$ARGS"  | cut -d',' -f1)"   # "nvim" or "NVIM_APPNAME=nvim-treemux nvim"
 TREE_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f2)"   # "~/.tmux/plugins/treemux/configs/treemux_init.vim"
 EDITOR_NVIM_INIT_FILE="$(echo "$ARGS"  | cut -d',' -f3)"   # ""
 PYTHON_COMMAND="$(echo "$ARGS"  | cut -d',' -f4)"   # "python3"
@@ -171,7 +171,7 @@ split_sidebar_left() {
 	if [[ -z "$TREE_NVIM_INIT_FILE" ]]
 	then
 		local sidebar_id="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
@@ -179,10 +179,11 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
+			'+let g:nvim_tree_remote_python_path=\"$PYTHON_COMMAND\"' \
 			")"
 	else
 		local sidebar_id="$(tmux new-window -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
@@ -190,6 +191,7 @@ split_sidebar_left() {
 			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
+			'+let g:nvim_tree_remote_python_path=\"$PYTHON_COMMAND\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"
 	fi
@@ -218,7 +220,7 @@ split_sidebar_right() {
 	if [[ -z "$TREE_NVIM_INIT_FILE" ]]
 	then
 		local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
@@ -226,10 +228,11 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
+			'+let g:nvim_tree_remote_python_path=\"$PYTHON_COMMAND\"' \
 			")"
 	else
 		local sidebar_id="$(tmux split-window -h -l "$sidebar_size" -c "$NVIMTREE_ROOT_DIR" -P -F "#{pane_id}" \
-			"'$NVIM_COMMAND' '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
+			"$NVIM_COMMAND '$NVIMTREE_ROOT_DIR' --listen '$nvim_addr' \
 			'+lua require(\"nvim-tree.api\").tree.open({current_window = true})' \
 			'+let g:nvim_tree_remote_tmux_pane=\"$PANE_ID\"' \
 			'+let g:nvim_tree_remote_tmux_split_position=\"$EDITOR_POSITION\"' \
@@ -237,6 +240,7 @@ split_sidebar_right() {
 			'+let g:nvim_tree_remote_tmux_focus=\"$OPEN_FOCUS\"' \
 			'+let g:nvim_tree_remote_tmux_editor_init_file=\"$EDITOR_NVIM_INIT_FILE\"' \
 			'+let g:nvim_tree_remote_treemux_path=\"$CURRENT_DIR/..\"' \
+			'+let g:nvim_tree_remote_python_path=\"$PYTHON_COMMAND\"' \
 			-u '$TREE_NVIM_INIT_FILE' \
 			")"
 	fi

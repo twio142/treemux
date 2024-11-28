@@ -41,13 +41,14 @@ stay in the tree!
 
     set -g @treemux-open-focus 'tree'
 
-> Specify Neovim path (default: `nvim`)
+> Specify Neovim path or set NVIM_APPNAME environment variable to separate the environment from the main nvim config (default: `nvim`)
 
-    set -g @treemux-nvim-command '/path/to/nvim'
+    set -g @treemux-nvim-command '/path/to/nvim'  
+    set -g @treemux-nvim-command 'NVIM_APPNAME=nvim-treemux nvim'
 
 > Specify Python path (default: `python3`)
 
-    set -g @treemux-python-command '/path/to/python3'
+    set -g @treemux-python-command '/usr/bin/python3'
 
 > Dev debug mode which will open another pane for debugging.
 

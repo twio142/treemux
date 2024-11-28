@@ -30,9 +30,7 @@ set_default_key_binding_options() {
 
 set_key_bindings() {
 	local stored_key_vars="$(stored_key_vars)"
-	local search_var
 	local key
-	local pattern
 	for option in $stored_key_vars; do
 		key="$(get_key_from_option_name "$option")"
 		value="$(get_value_from_option_name "$option")"
