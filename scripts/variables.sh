@@ -27,7 +27,7 @@ TREE_NVIM_INIT_FILE_OPTION="@treemux-tree-nvim-init-file"
 EDITOR_NVIM_INIT_FILE=""
 EDITOR_NVIM_INIT_FILE_OPTION="@treemux-editor-nvim-init-file"
 
-PYTHON_COMMAND="python3"
+PYTHON_COMMAND="/usr/bin/python3"
 PYTHON_COMMAND_OPTION="@treemux-python-command"
 
 TREE_POSITION="left"

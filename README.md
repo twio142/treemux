@@ -51,15 +51,25 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
 
 ```tmux
 set -g @treemux-tree-nvim-init-file '~/.tmux/plugins/treemux/configs/treemux_init.lua'
-set -g @treemux-python-command '/usr/bin/python3'  # default is 'python3'
 set -g @plugin 'kiyoon/treemux'
 ```
 
 - The first line sets a separate nvim init file for the tree to separate from the editor.
     - This contains some plugins to interact neovim in another pane.
     - You can customise the tree by copying the `treemux_init.lua` file somewhere outside the repo and modifying the file.
-- The second line sets which python command to use. Make sure to choose one that has `pynvim` installed.
-    - The default uses `python3` but this is risky because if you activate a python virtual environment, the pynvim may not be installed on that environment.
+
+Optionally, consider setting these options in your `.tmux.conf` (they should be set before the `set -g @plugin 'kiyoon/treemux'` line):
+
+```tmux
+# Set python with pynvim installed.
+# Use an absolute path because if you activate a python virtual environment, the pynvim may not be installed on that environment.
+set -g @treemux-python-command '/path/to/python3'  # default is '/usr/bin/python3'
+
+# If you want to completely isolate the treemux's nvim config and data from your main nvim config and data, set NVIM_APPNAME.
+# This will make treemux use '~/.config/nvim-treemux', '~/.local/share/nvim-treemux'
+set -g @treemux-nvim-command 'NVIM_APPNAME=nvim-treemux nvim'  # default is 'nvim'
+```
+
 
 Hit `prefix + I` to fetch the plugin and source it.
 

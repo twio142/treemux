@@ -46,9 +46,9 @@ stay in the tree!
     set -g @treemux-nvim-command '/path/to/nvim'  
     set -g @treemux-nvim-command 'NVIM_APPNAME=nvim-treemux nvim'
 
-> Specify Python path (default: `python3`)
+> Specify Python path with `pynvim` installed (default: `/usr/bin/python3`)
 
-    set -g @treemux-python-command '/usr/bin/python3'
+    set -g @treemux-python-command '/path/to/python3'
 
 > Dev debug mode which will open another pane for debugging.
 
